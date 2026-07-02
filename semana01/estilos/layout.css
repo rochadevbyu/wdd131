@@ -17,12 +17,15 @@ body {
 
 header {
     background: lightpink;
-    grid-column: 1 / 4;
+    grid-column: 1 / -1;
     color: white;
 }
 
-.header-top {
+header h1 {
     padding: 0.5rem;
+    font-size: 1rem;
+    /* Ajuste o tamanho da fonte se o h1 estiver muito grande */
+    font-weight: normal;
 }
 
 nav ul {
@@ -53,7 +56,7 @@ aside {
 }
 
 footer {
-    grid-column: 1 / 4;
+    grid-column: 1 / -1;
     background-color: #333333;
     color: white;
     text-align: center;
