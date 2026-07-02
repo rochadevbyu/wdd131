@@ -1,6 +1,3 @@
-/* 
-    Layout CSS
-*/
 * {
     box-sizing: border-box;
     margin: 0;
@@ -16,7 +13,7 @@ body {
 }
 
 header {
-    background: lightpink;
+    background-color: lightpink;
     grid-column: 1 / -1;
     color: white;
 }
@@ -24,8 +21,11 @@ header {
 header h1 {
     padding: 0.5rem;
     font-size: 1rem;
-    /* Ajuste o tamanho da fonte se o h1 estiver muito grande */
     font-weight: normal;
+}
+
+nav {
+    background-color: black;
 }
 
 nav ul {
