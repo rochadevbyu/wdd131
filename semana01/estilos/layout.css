@@ -10,7 +10,7 @@
 body {
     display: grid;
     min-height: 100vh;
-    grid-template-areas: auto 1fr auto;
+    grid-template-rows: auto 1fr auto;
     grid-template-columns: 3fr 1fr;
     font-family: Arial, sans-serif;
 }
