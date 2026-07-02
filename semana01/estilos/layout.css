@@ -1,0 +1,61 @@
+/* 
+    Layout CSS
+*/
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: grid;
+    min-height: 100vh;
+    grid-template-areas: auto 1fr auto;
+    grid-template-columns: 3fr 1fr;
+    font-family: Arial, sans-serif;
+}
+
+header {
+    background: lightpink;
+    grid-column: 1 / 4;
+    color: white;
+}
+
+.header-top {
+    padding: 0.5rem;
+}
+
+nav ul {
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+    padding: 0.5rem;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+main {
+    grid-column: 1 / 2;
+    background-color: #c0c0c0;
+    padding: 1rem;
+    color: #333;
+}
+
+aside {
+    grid-column: 2 / 3;
+    background-color: white;
+    padding: 1rem;
+    color: #333;
+}
+
+footer {
+    grid-column: 1 / 4;
+    background-color: #333333;
+    color: white;
+    text-align: center;
+    padding: 0.5rem;
+}
