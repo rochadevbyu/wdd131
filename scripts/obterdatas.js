@@ -4,7 +4,7 @@ const mês = document.querySelector("#mês");
 const dia = document.querySelector("#dia");
 const diadasemana = document.querySelector("#diadasemana");
 
-// use o objeto Date()
+// use o objeto Date() 
 const hoje = new Date();
 
 document.querySelector("#anoatual").textContent = hoje.getFullYear();
