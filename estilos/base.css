@@ -15,7 +15,7 @@ header {
     color: white;
 }
 
-header h1 span {
+#course-title {
     display: block;
     text-align: center;
     background-color: #1f364d;
@@ -40,6 +40,11 @@ nav a {
     text-decoration: none;
     font-size: 1rem;
     padding: 0.5rem;
+}
+
+nav a:hover {
+    background-color: white;
+    color: #1f364d;
 }
 
 main {
