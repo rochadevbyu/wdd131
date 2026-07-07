@@ -1,0 +1,13 @@
+@media screen and (min-width: 500px) {
+    body {
+        font-family: 'Roboto', sans-serif;
+        background-color: black;
+    }
+
+    main {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 1rem;
+    }
+
+}
