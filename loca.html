@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Olinda - Pernambuco</title>
+    <meta name="description" content="Olinda - Pernambuco">
+    <meta name="author" content="Roberto Ferreira da Rocha">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Yuyu+Short&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="estilos/local.css">
+    <script src="scripts/local.js" defer></script>
+   
+</head>
+<body>
+    <header>
+        <h1>Olinda - Pernambuco</h1>
+    </header>
+     <main>
+        <div class="principal">
+            <picture>
+                <source srcset="imagens/principal-grande.webp" media="(min-width: 1000px)">
+                <source srcset="imagens/principal-media.webp" media="(min-width: 500px)">
+                <img src="imagens/principal-pequena.webp" alt="Olinda - Pernambuco" width="400" height="200">
+            </picture>
+        </div>
+
+        <section class="informacoes">
+            <h2>Sobre a Cidade</h2>
+            <p>Olinda é uma cidade colonial na costa nordeste do Brasil, perto da cidade do Recife. Fundada em 1535 pelos portugueses, foi construída em encostas íngremes e distingue-se pela arquitetura do século XVIII, com igrejas barrocas, conventos, mosteiros e casas de cores vivas. Originalmente um centro da indústria da cana-de-açúcar, é agora conhecida como uma colónia de artistas, com diversas galerias, oficinas e museus.</p>
+        </section>
+
+        <section class="clima">
+            <h3 class="titulo-clima">Clima</h3>
+            <img src="imagens/clima.svg" alt="Ícone de clima" class="icone-clima-portatil">
+
+            <p><strong>Temperatura:</strong> <span id="temperatura">28</span> °C</p>
+            <p><strong>Vento:</strong> <span id="vento">15</span> km/h</p>
+            <p><strong>Sensação Térmica:</strong> <span id="sensacao"></span></p>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; <span id="anoAtual"></span> | Roberto Ferreira da Rocha | Olinda, PE</p>
+        <p id="ultimaModificacao"></p>
+    </footer>
+</body>
+</html>
