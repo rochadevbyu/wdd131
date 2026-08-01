@@ -75,7 +75,7 @@ footer {
   margin-top: 1rem; /* Dá um respiro entre a foto e o rodapé */
 }
 
-@media (min-width: 768px) {
+@media (min-width: 980px) {
   
   main {
     display: grid;
