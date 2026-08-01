@@ -1,0 +1,89 @@
+:root {
+  --cor-primaria: #00319b; /* Verde */
+  --cor-secundaria: #fedf00; /* Amarelo */
+  --cor-fundo: #f8f9fa;
+  --cor-texto: #2d09fc;
+  --cor-caixa-clima: #e0f7fa;
+  --fonte-principal: 'Roboto', sans-serif;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: var(--fonte-principal);
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    line-height: 1.6;
+}
+
+
+header {
+  background-color: var(--cor-primaria);
+  color: white;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+main {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.principal img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.clima {
+  background-color: var(--cor-caixa-clima);
+  padding: 1.5rem;
+  border-radius: 8px;
+  border-left: 5px solid var(--cor-primaria);
+}
+
+.titulo-clima {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+/* O ícone SVG que aparece APENAS no mobile */
+.icone-clima-portatil {
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+}
+
+
+@media (min-width: 768px) {
+  
+  /* O layout passa de empilhado (1 coluna) para grade (2 colunas) */
+  main {
+    display: grid;
+    grid-template-areas: 
+    "foto clima"
+    "info clima";
+    grid-template-columns: 2fr 1fr; /* Conteúdo principal mais largo que a barra lateral */
+    align-items: start;
+  }
+  .principal {grid-area: foto;}
+  .informacoes {grid-area:info;}
+  .clima{grid-area:clima;}
+  
+  .icone-clima-portatil {
+    display: none; 
+  }
+
+  .titulo-clima::after {
+    content: ' ⛅'; 
+    font-size: 1.2rem;
+    margin-left: 10px;
+  }
+}
+
