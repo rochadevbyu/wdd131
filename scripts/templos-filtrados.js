@@ -3,7 +3,7 @@ const hoje = new Date();
 document.querySelector("#anoatual").textContent = hoje.getFullYear();
 document.querySelector("#ultimaModificacao").textContent = "Última Modificação: " + document.lastModified;
 
-
+// --- 2. LISTA DE TEMPLOS ---
 const templos = [
   {
     nomeDoTemplo: "Aba Nigeria",
@@ -91,7 +91,7 @@ const templos = [
   },
 ];
 
-// --- 2. MENU HAMBÚRGUER RESPONSIVO ---
+// --- 3. MENU HAMBÚRGUER RESPONSIVO ---
 const menuButton = document.querySelector('#menu-hamburguer');
 const navigation = document.querySelector('nav ul');
 
@@ -109,15 +109,15 @@ menuButton.addEventListener('click', () => {
     }
 });
 
-// Selecionamos a div onde os cartões vão aparecer
+// --- 4. ONDE OS CARTÕES VÃO APARECER ---
 const galeria = document.querySelector(".galeria");
 
-// Criamos a função que recebe uma lista de templos
+//--- 5. FUNÇÃO QUE RECEBE UMA LISTA DE TEMPLOS
 function exibirTemplos(listaTemplos) {
     // 1. Limpamos a galeria (útil para quando formos filtrar depois)
     galeria.innerHTML = "";
 
-    // 2. Fazemos um loop por cada templo da lista
+    // Loop por cada templo da lista
     listaTemplos.forEach(templo => {
         // 3. Criamos o cartão em HTML
         let cartao = `
@@ -127,48 +127,48 @@ function exibirTemplos(listaTemplos) {
                     <h3>${templo.nomeDoTemplo}</h3>
                     <p>${templo.localizacao}</p>
                     <p>Consagração: ${templo.consagracao}</p>
-                    <p>Área: ${templo.area} m²</p>
+                    <p>Área: ${templo.area} sq ft</p>
                 </figcaption>
             </figure>
         `;
         
-        // 4. Inserimos o cartão na galeria
+        // Insere o cartão na galeria
         galeria.innerHTML += cartao;
     });
 }
 
-// 5. Chamamos a função passando o array completo para testar
+// --- 6. CHAMADA DA FUNÇÃO ---
 exibirTemplos(templos);
 
-// Selecionando os botões no HTML
+// --- 7. SELEÇÃO DOS BOTÕES NO HTML ---
 const btnHome = document.querySelector("#btn-home");
 const btnGrande = document.querySelector("#btn-grande");
 const btnPequeno = document.querySelector("#btn-pequeno");
 const btnAntigo = document.querySelector("#btn-antigo");
 const btnNovo = document.querySelector("#btn-novo");
 
-// Evento para a Página Inicial (Mostra todos)
+// --- 8. EVENTOS PARA OS BOTÕES ---
 btnHome.addEventListener("click", () => {
     exibirTemplos(templos);
 });
 
-// Evento para os Templos Grandes
-// Filtro para Templos Grandes
+
+// --- 9. Filtro para Templos Grandes
 btnGrande.addEventListener("click", () => {
     exibirTemplos(templos.filter(templo => templo.area > 90000));
 });
 
-// Filtro para Templos Pequenos
+// --- 10. Filtro para Templos Pequenos
 btnPequeno.addEventListener("click", () => {
     exibirTemplos(templos.filter(templo => templo.area < 10000));
 });
 
-// Filtro para Templos Antigos
+// --- 11. Filtro para Templos Antigos
 btnAntigo.addEventListener("click", () => {
-    exibirTemplos(templos.filter(templo => parseInt(templo.consagracao) < 1999));
+    exibirTemplos(templos.filter(templo => parseInt(templo.consagracao) < 1900));
 });
 
-// Filtro para Templos Novos
+// --- 12. Filtro para Templos Novos
 btnNovo.addEventListener("click", () => {
     exibirTemplos(templos.filter(templo => parseInt(templo.consagracao) > 2000));
 });
