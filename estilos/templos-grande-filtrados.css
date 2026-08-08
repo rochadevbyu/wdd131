@@ -1,0 +1,15 @@
+@media (min-width: 48rem) {
+    .galeria {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    nav ul {
+        display: flex;
+        flex-direction: row;
+    }
+
+    #menu-hamburguer {
+        display: none;
+    }
+}
+
