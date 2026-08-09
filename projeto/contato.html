@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SGINF - RPPS por Roberto Ferreira da Rocha</title>
+    <meta name="description"
+        content="SGINF - RPPS por Roberto Ferreira da Rocha - Plataforma de Gestão de Informações para Regimes Próprios de Previdência Social.">
+    <meta name="author" content="Roberto Ferreira da Rocha">
+
+    <link rel="stylesheet" href="estilos/index.css">
+    <script src="scripts/index.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Yuyu+Short&display=swap"
+        rel="stylesheet">
+</head>
+
+
+<body>
+    <header>
+        <div class="logo">SGINF - RPPS</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Página Inicial</a></li>
+                <li><a href="solucoes.html">Soluções</a></li>
+                <li><a href="contato.html">Contato</a></li>
+            </ul>
+        </nav>  
+    </header>   
+    <main>
+        <section class="form-section">
+            <h2>Fale com um Especialista</h2>
+            <form id="contact-form">
+                <label for="name">Nome Completo:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="phone">Telefone / WhatsApp:</label>
+                <input type="tel" id="phone" name="phone" required>
+
+                <label for="workplace">Órgão / Município:</label>
+                <input type="text" id="workplace" name="workplace" required>
+
+                <label for="referrer">Nome de quem indicou:</label>
+                <input type="text" id="referrer" name="referrer">
+
+                <button type="submit" class="btn">Solicitar Demonstração</button>
+            </form>
+            <div id="form-message"></div>
+        </section>
+    </main>
+ <footer>
+        <p>&copy; <span id="anoatual"></span>SGINF-RPPS. Todos os direitos reservados.</p>
+        <p id="ultimaModificacao"></p>
+        <p><a href="referencias.html">Página de Referências</a></p>
+    </footer>
+
+</body>
+</html>
