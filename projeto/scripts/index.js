@@ -14,9 +14,10 @@ const solutions = [
 ];
 
 // 1. Dados Estruturados (O Pacote: Imagem + Desafio + Solução)
+// 1. Dados Estruturados (O Pacote: Imagem + Desafio + Solução)
 const recursos = [
     {
-        img: 'imagens/parametros.webp', // A imagem que prova a solução
+        img: 'imagens/solucao-calculos.webp', 
         alt: 'Tela de Cálculos Automáticos',
         desafioTitulo: 'Cálculos Complexos',
         desafioTexto: 'Dificuldade em apurar juros, multas e correção monetária de repasses em atraso.',
@@ -24,7 +25,7 @@ const recursos = [
         solucaoTexto: 'O sistema realiza todo o cálculo automaticamente com base nos índices oficiais, gerando a guia pronta para pagamento.'
     },
     {
-        img: 'imagens/prestacao-contas.webp', 
+        img: 'imagens/solucao-tce.webp', 
         alt: 'Módulo de Anexos TCE',
         desafioTitulo: 'Rigor do TCE-PE',
         desafioTexto: 'Necessidade de gerar anexos específicos sem inconsistências e risco de multas.',
@@ -32,12 +33,20 @@ const recursos = [
         solucaoTexto: 'Geração de anexos no padrão exato exigido pelo tribunal, com auditoria prévia de erros.'
     },
     {
-        img: 'imagens/segregacao.webp', // Substitua pela imagem correta depois
+        img: 'imagens/solucao-segregacao.webp', 
         alt: 'Contas Isoladas',
         desafioTitulo: 'Segregação de Massas',
         desafioTexto: 'Controle rigoroso e isolado entre Fundo Financeiro e Fundo Previdenciário.',
         solucaoTitulo: 'Gestão Inteligente',
         solucaoTexto: 'Módulos nativamente isolados, garantindo que as contas e balancetes nunca se misturem.'
+    },
+    {
+        img: 'imagens/solucao-dados.webp', 
+        alt: 'Painel unificado de servidores, dependentes e rúbricas',
+        desafioTitulo: 'Dados Descentralizados e Dispersos',
+        desafioTexto: 'Informações pulverizadas entre Prefeitura, Câmara e Autarquias, gerando desalinhamento no quantitativo de servidores, dependentes e divergências nos valores de rúbricas pagas.',
+        solucaoTitulo: 'Centralização e BI Comparativo',
+        solucaoTexto: 'Visão unificada em painel único: acompanhamento em tempo real de servidores e dependentes, detalhamento analítico por rúbricas e comparativo evolutivo de valores em relação ao ano anterior.'
     }
 ];
 
@@ -141,13 +150,23 @@ function handleFormSubmit() {
 }
 
 // 4. Função para atualizar dinamicamente o rodapé
+// 4. Função para atualizar dinamicamente o rodapé com a data formatada
 function updateFooter() {
-    const yearSpan = document.getElementById('anoatual'); // ID alterado aqui
-    const lastModifiedSpan = document.getElementById('ultimaModificacao'); // ID alterado aqui
+    const yearSpan = document.getElementById('anoatual');
+    const lastModifiedSpan = document.getElementById('ultimaModificacao');
     
     if (yearSpan && lastModifiedSpan) {
+        // Atualiza o ano atual
         yearSpan.innerHTML = `${new Date().getFullYear()}`;
-        lastModifiedSpan.innerHTML = `Última modificação: ${document.lastModified}`;
+        
+        // Pega a data crua do navegador
+        const dataCrua = new Date(document.lastModified);
+        
+        // Converte para o formato brasileiro (dd/mm/aaaa)
+        const dataFormatada = dataCrua.toLocaleDateString('pt-BR');
+        
+        // Injeta a data bonitinha no rodapé
+        lastModifiedSpan.innerHTML = `Última modificação: ${dataFormatada}`;
     }
 }
 
