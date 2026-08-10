@@ -1,0 +1,139 @@
+/* Paleta de Cores Acessível (Contraste Nível AA) */
+:root {
+    --bg-color: #ffffff;
+    --form-bg: #d1d5db; /* Fundo cinza suave parecido com a captura */
+    --header-bg: #3b0764; /* Roxo escuro institucional */
+    --text-main: #1f2937;
+    --text-light: #ffffff;
+    --required-color: #b91c1c; /* Vermelho escuro para asteriscos */
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    margin: 0;
+    padding: 0;
+}
+
+header, footer {
+    background-color: var(--header-bg);
+    color: var(--text-light);
+    text-align: center;
+    padding: 1.5rem;
+}
+
+main {
+    max-width: 500px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+/* Estilo da Caixa do Formulário */
+.review-form {
+    background-color: var(--form-bg);
+    padding: 2rem;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+label, legend {
+    font-weight: bold;
+    font-size: 0.95rem;
+}
+
+.asterisk {
+    color: var(--required-color);
+}
+
+/* Inputs, Selects e Textarea */
+input[type="text"], input[type="date"], select, textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #9ca3af;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-family: inherit;
+    margin-top: 0.4rem;
+}
+
+fieldset {
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Classificação (Estrelas) */
+.stars-container {
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.5rem;
+    text-align: center;
+}
+
+.stars-container input[type="radio"] {
+    transform: scale(1.3);
+    margin-top: 0.5rem;
+}
+
+/* Checkboxes */
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.checkbox-group label {
+    font-weight: normal;
+}
+
+/* Botão de Submit */
+.submit-btn {
+    background-color: #e5e7eb;
+    color: var(--text-main);
+    font-size: 1.1rem;
+    font-weight: bold;
+    padding: 1rem;
+    border: 1px solid #9ca3af;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: background-color 0.3s;
+}
+
+.submit-btn:hover {
+    background-color: #9ca3af;
+    color: #ffffff;
+}
+
+/* Estilos da Página de Confirmação */
+.confirmation-main {
+    text-align: center;
+    background-color: var(--form-bg);
+    padding: 3rem 2rem;
+    border-radius: 8px;
+}
+
+.counter-box {
+    background-color: var(--header-bg);
+    color: var(--text-light);
+    padding: 1rem;
+    border-radius: 8px;
+    margin: 2rem 0;
+}
+
+.counter-box span {
+    font-size: 1.5rem;
+    color: #fde047; /* Amarelo para destaque */
+}
+
+.back-link {
+    display: inline-block;
+    color: var(--header-bg);
+    font-weight: bold;
+    text-decoration: none;
+    border-bottom: 2px solid var(--header-bg);
+}

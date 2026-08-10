@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avaliação do Produto - WDD 131</title>
+    <meta name="description" content="Formulário de avaliação de produto para o curso WDD 131.">
+    <link rel="stylesheet" href="estilos/form.css">
+    <script src="scripts/form.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>Avaliação do Produto</h1>
+    </header>
+
+    <main>
+        <!-- O método GET e a action para a página de confirmação -->
+        <form method="get" action="avaliacao.html" class="review-form">
+            
+            <!-- Nome do Produto (Select dinâmico) -->
+            <label for="produto">Nome do Produto <span class="asterisk">*</span></label>
+            <select id="produto" name="produto" required>
+                <option value="" disabled selected>Escolha um Produto ...</option>
+                <!-- As opções serão injetadas via JavaScript -->
+            </select>
+
+            <!-- Classificação Geral (Botões de Opção / Radio) -->
+            <fieldset class="rating-fieldset">
+                <legend>Classificação Geral <span class="asterisk">*</span></legend>
+                <div class="stars-container">
+                    <div>
+                        <label for="star1">☆</label><br>
+                        <input type="radio" id="star1" name="rating" value="1" required>
+                    </div>
+                    <div>
+                        <label for="star2">☆☆</label><br>
+                        <input type="radio" id="star2" name="rating" value="2">
+                    </div>
+                    <div>
+                        <label for="star3">☆☆☆</label><br>
+                        <input type="radio" id="star3" name="rating" value="3">
+                    </div>
+                    <div>
+                        <label for="star4">☆☆☆☆</label><br>
+                        <input type="radio" id="star4" name="rating" value="4">
+                    </div>
+                    <div>
+                        <label for="star5">☆☆☆☆☆</label><br>
+                        <input type="radio" id="star5" name="rating" value="5">
+                    </div>
+                </div>
+            </fieldset>
+
+            <!-- Data de Instalação -->
+            <label for="data_instalacao">Data de Instalação <span class="asterisk">*</span></label>
+            <input type="date" id="data_instalacao" name="data_instalacao" required>
+
+            <!-- Recursos Úteis (Caixas de seleção / Checkbox) -->
+            <fieldset class="features-fieldset">
+                <legend>Quais recursos você achou úteis no produto?<br><em>(Marque todos que se aplicam)</em></legend>
+                
+                <div class="checkbox-group">
+                    <input type="checkbox" id="feat_durabilidade" name="recursos" value="durabilidade">
+                    <label for="feat_durabilidade">Durabilidade</label>
+                </div>
+                
+                <div class="checkbox-group">
+                    <input type="checkbox" id="feat_facilidade" name="recursos" value="facilidade">
+                    <label for="feat_facilidade">Facilidade de Uso</label>
+                </div>
+                
+                <div class="checkbox-group">
+                    <input type="checkbox" id="feat_desempenho" name="recursos" value="desempenho">
+                    <label for="feat_desempenho">Desempenho</label>
+                </div>
+                
+                <div class="checkbox-group">
+                    <input type="checkbox" id="feat_design" name="recursos" value="design">
+                    <label for="feat_design">Design</label>
+                </div>
+            </fieldset>
+
+            <!-- Avaliação Escrita -->
+            <label for="avaliacao_escrita">Avaliação Escrita <em>(Opcional)</em></label>
+            <textarea id="avaliacao_escrita" name="avaliacao_escrita" rows="4"></textarea>
+
+            <!-- Nome de Usuário -->
+            <label for="nome_usuario">Seu Nome <em>(Opcional)</em></label>
+            <input type="text" id="nome_usuario" name="nome_usuario">
+
+            <!-- Botão de Envio -->
+            <input type="submit" value="Publicar Avaliação" class="submit-btn">
+        </form>
+    </main>
+
+    <footer>
+        <p>&copy; <span id="currentyear"></span> - Roberto Ferreira da Rocha - Pernambuco</p>
+        <p id="lastModified"></p>
+    </footer>
+</body>
+</html>

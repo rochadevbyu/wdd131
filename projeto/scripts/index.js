@@ -106,6 +106,61 @@ function renderCards(dataArray, containerId) {
     }
 }
 
+// Função para controlar as perguntas condicionais do formulário de contato
+// Função para controlar as perguntas condicionais do formulário de contato
+function setupFormLogic() {
+    const roleSelect = document.getElementById('role');
+    
+    // Contêineres de cada bloco de perguntas
+    const gestorQuestions = document.getElementById('gestor-questions');
+    const parceiroQuestions = document.getElementById('parceiro-questions');
+    const servidorQuestions = document.getElementById('servidor-questions');
+    const outrosQuestions = document.getElementById('outros-questions');
+
+    // Elementos internos do Gestor
+    const guiasRadios = document.getElementsByName('guias_auto');
+    const satisfacaoGroup = document.getElementById('satisfacao-group');
+
+    if (roleSelect) {
+        
+        // 1. Ouve a mudança na caixa de seleção de "Perfil"
+        roleSelect.addEventListener('change', function() {
+            // Primeiro, esconde TODOS os blocos para garantir que a tela fique limpa
+            if (gestorQuestions) gestorQuestions.style.display = 'none';
+            if (parceiroQuestions) parceiroQuestions.style.display = 'none';
+            if (servidorQuestions) servidorQuestions.style.display = 'none';
+            if (outrosQuestions) outrosQuestions.style.display = 'none';
+
+            // Depois, mostra apenas o bloco correspondente ao que foi selecionado
+            if (this.value === 'gestor') {
+                if (gestorQuestions) gestorQuestions.style.display = 'block';
+            } 
+            else if (this.value === 'contador' || this.value === 'consultor') {
+                if (parceiroQuestions) parceiroQuestions.style.display = 'block';
+            } 
+            else if (this.value === 'servidor') {
+                if (servidorQuestions) servidorQuestions.style.display = 'block';
+            } 
+            else if (this.value === 'outros') {
+                if (outrosQuestions) outrosQuestions.style.display = 'block';
+            }
+        });
+
+        // 2. Lógica interna do Gestor (Ouve o clique nos botões de "Sim/Não")
+        if (guiasRadios && satisfacaoGroup) {
+            guiasRadios.forEach(radio => {
+                radio.addEventListener('change', function() {
+                    if (this.value === 'sim') {
+                        satisfacaoGroup.style.display = 'block'; // Mostra satisfação
+                    } else {
+                        satisfacaoGroup.style.display = 'none'; // Esconde satisfação
+                    }
+                });
+            });
+        }
+    }
+}
+
 // 3. Função para manipular o formulário e usar localStorage
 function handleFormSubmit() {
     const form = document.getElementById('contact-form');
@@ -173,6 +228,8 @@ function updateFooter() {
 // Chamando todas as funções quando o arquivo for carregado
 renderCards(challenges, 'desafios-container');
 renderCards(solutions, 'solucoes-container');
+renderRecursos();
 handleFormSubmit();
 updateFooter();
+setupFormLogic();
 
