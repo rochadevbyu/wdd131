@@ -1,20 +1,18 @@
-// 1. Dados estruturados em Arrays e Objetos
-const challenges = [
-  { title: 'Cálculos Complexos', desc: 'Dificuldade em apurar juros, multas e correção monetária de repasses em atraso.' },
-  { title: 'Rigor do TCE-PE', desc: 'Necessidade de gerar anexos específicos sem inconsistências.' },
-  { title: 'Segregação de Massas', desc: 'Controle rigoroso e isolado entre Fundo Financeiro e Fundo Previdenciário.' },
-  { title: 'Dados Descentralizados', desc: 'Informações dispersas entre Prefeitura, Câmara e Autarquias.' }
+// 1. Dados estruturados
+const desafios = [
+  { titulo: 'Cálculos Complexos', descricao: 'Dificuldade em apurar juros, multas e correção monetária de repasses em atraso.' },
+  { titulo: 'Rigor do TCE-PE', descricao: 'Necessidade de gerar anexos específicos sem inconsistências.' },
+  { titulo: 'Segregação de Massas', descricao: 'Controle rigoroso e isolado entre Fundo Financeiro e Fundo Previdenciário.' },
+  { titulo: 'Dados Descentralizados', descricao: 'Informações dispersas entre Prefeitura, Câmara e Autarquias.' }
 ];
 
-const solutions = [
-  { title: 'Mobilidade Total', desc: 'Sem instalação local. Acesse via PC, tablet ou smartphone.' },
-  { title: 'Segurança de Dados', desc: 'Hospedagem em infraestrutura de alta performance.' },
-  { title: 'Interface Intuitiva', desc: 'Design moderno com foco no conforto e produtividade do usuário.' },
-  { title: 'Business Intelligence (BI)', desc: 'Dashboards interativos com visão em tempo real.' }
+const solucoes = [
+  { titulo: 'Mobilidade Total', descricao: 'Sem instalação local. Acesse via PC, tablet ou smartphone.' },
+  { titulo: 'Segurança de Dados', descricao: 'Hospedagem em infraestrutura de alta performance.' },
+  { titulo: 'Interface Intuitiva', descricao: 'Design moderno com foco no conforto e produtividade do usuário.' },
+  { titulo: 'Business Intelligence (BI)', descricao: 'Dashboards interativos com visão em tempo real.' }
 ];
 
-// 1. Dados Estruturados (O Pacote: Imagem + Desafio + Solução)
-// 1. Dados Estruturados (O Pacote: Imagem + Desafio + Solução)
 const recursos = [
     {
         img: 'imagens/solucao-calculos.webp', 
@@ -51,185 +49,148 @@ const recursos = [
 ];
 
 // 2. Função para renderizar os Cartões Unificados
-function renderRecursos() {
+function renderizarRecursos() {
     const container = document.getElementById('recursos-container');
 
     if (container) {
-        let htmlOutput = ``;
+        let htmlSaida = ``;
 
         recursos.forEach(item => {
-            // Criando um layout visual claro: Imagem -> Problema (Vermelho) -> Solução (Verde)
-            htmlOutput += `
+            htmlSaida += `
                 <div class="card">
                     <img src="${item.img}" alt="${item.alt}" loading="lazy" class="card-img">
                     
-                    <div style="margin-top: 1.5rem;">
-                        <h4 style="color: #ef4444; margin: 0 0 0.5rem 0;">⚠️ O Desafio: ${item.desafioTitulo}</h4>
-                        <p style="font-size: 0.95rem; margin-bottom: 1.5rem;">${item.desafioTexto}</p>
+                    <div class="card-interno">
+                        <h4 class="desafio-titulo">⚠️ O Desafio: ${item.desafioTitulo}</h4>
+                        <p class="desafio-texto">${item.desafioTexto}</p>
                         
-                        <div style="border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 1rem;">
-                            <h4 style="color: #10b981; margin: 0 0 0.5rem 0;">✅ A Solução: ${item.solucaoTitulo}</h4>
-                            <p style="font-size: 0.95rem; color: #cbd5e1;">${item.solucaoTexto}</p>
+                        <div class="solucao-container">
+                            <h4 class="solucao-titulo">✅ A Solução: ${item.solucaoTitulo}</h4>
+                            <p class="solucao-texto">${item.solucaoTexto}</p>
                         </div>
                     </div>
                 </div>
             `;
         });
 
-        container.innerHTML = htmlOutput;
+        container.innerHTML = htmlSaida;
     }
 }
 
-// 3. Chamando a função (Não esqueça de manter a do formulário e do footer no fim do arquivo!)
-renderRecursos();
-
-// 2. Função para renderizar conteúdo dinamicamente (Uso EXCLUSIVO de Template Literals)
-function renderCards(dataArray, containerId) {
-    const container = document.getElementById(containerId);
+// 3. Função para renderizar conteúdo dinamicamente
+function renderizarCartoes(arrayDados, idContainer) {
+    const container = document.getElementById(idContainer);
     
-    // Ramificação condicional: só executa se o container existir na página atual
     if (container) {
-        let htmlOutput = ``; 
+        let htmlSaida = ``; 
         
-        // Uso de método de array (forEach)
-        dataArray.forEach(item => {
-            htmlOutput += `
+        arrayDados.forEach(item => {
+            htmlSaida += `
                 <div class="card">
-                    <h3>${item.title}</h3>
-                    <p>${item.desc}</p>
+                    <h3>${item.titulo}</h3>
+                    <p>${item.descricao}</p>
                 </div>
             `;
         });
         
-        // Interação e modificação do DOM
-        container.innerHTML = htmlOutput;
+        container.innerHTML = htmlSaida;
     }
 }
 
-// Função para controlar as perguntas condicionais do formulário de contato
-// Função para controlar as perguntas condicionais do formulário de contato
-function setupFormLogic() {
-    const roleSelect = document.getElementById('role');
+// 4. Função para controlar a lógica condicional do formulário de contato
+function configurarLogicaFormulario() {
+    // Pega todos os botões de rádio que têm o name="perfil"
+    const radiosPerfil = document.getElementsByName('perfil');
     
-    // Contêineres de cada bloco de perguntas
-    const gestorQuestions = document.getElementById('gestor-questions');
-    const parceiroQuestions = document.getElementById('parceiro-questions');
-    const servidorQuestions = document.getElementById('servidor-questions');
-    const outrosQuestions = document.getElementById('outros-questions');
+    // Contêineres de cada perfil
+    const perfilGestor = document.getElementById('gestor-perfil');
+    const perfilParceiro = document.getElementById('parceiro-perfil');
+    const perfilPrefeito = document.getElementById('prefeito-perfil');
+    const perfilOutros = document.getElementById('outros-perfil');
 
-    // Elementos internos do Gestor
-    const guiasRadios = document.getElementsByName('guias_auto');
-    const satisfacaoGroup = document.getElementById('satisfacao-group');
+    if (radiosPerfil.length > 0) {
+        // Percorre cada um dos botões de rádio e adiciona o evento de escuta
+        radiosPerfil.forEach(radio => {
+            radio.addEventListener('change', function() {
+                // Esconde todos os blocos sempre que o usuário mudar a opção
+                if (perfilGestor) perfilGestor.style.display = 'none';
+                if (perfilParceiro) perfilParceiro.style.display = 'none';
+                if (perfilPrefeito) perfilPrefeito.style.display = 'none';
+                if (perfilOutros) perfilOutros.style.display = 'none';
 
-    if (roleSelect) {
-        
-        // 1. Ouve a mudança na caixa de seleção de "Perfil"
-        roleSelect.addEventListener('change', function() {
-            // Primeiro, esconde TODOS os blocos para garantir que a tela fique limpa
-            if (gestorQuestions) gestorQuestions.style.display = 'none';
-            if (parceiroQuestions) parceiroQuestions.style.display = 'none';
-            if (servidorQuestions) servidorQuestions.style.display = 'none';
-            if (outrosQuestions) outrosQuestions.style.display = 'none';
-
-            // Depois, mostra apenas o bloco correspondente ao que foi selecionado
-            if (this.value === 'gestor') {
-                if (gestorQuestions) gestorQuestions.style.display = 'block';
-            } 
-            else if (this.value === 'contador' || this.value === 'consultor') {
-                if (parceiroQuestions) parceiroQuestions.style.display = 'block';
-            } 
-            else if (this.value === 'servidor') {
-                if (servidorQuestions) servidorQuestions.style.display = 'block';
-            } 
-            else if (this.value === 'outros') {
-                if (outrosQuestions) outrosQuestions.style.display = 'block';
-            }
-        });
-
-        // 2. Lógica interna do Gestor (Ouve o clique nos botões de "Sim/Não")
-        if (guiasRadios && satisfacaoGroup) {
-            guiasRadios.forEach(radio => {
-                radio.addEventListener('change', function() {
-                    if (this.value === 'sim') {
-                        satisfacaoGroup.style.display = 'block'; // Mostra satisfação
-                    } else {
-                        satisfacaoGroup.style.display = 'none'; // Esconde satisfação
-                    }
-                });
+                // Mostra apenas o bloco correspondente ao botão selecionado
+                if (this.value === 'gestor') {
+                    if (perfilGestor) perfilGestor.style.display = 'block';
+                } 
+                else if (this.value === 'contador') {
+                    if (perfilParceiro) perfilParceiro.style.display = 'block';
+                } 
+                else if (this.value === 'prefeito') {
+                    if (perfilPrefeito) perfilPrefeito.style.display = 'block';
+                } 
+                else if (this.value === 'outros') {
+                    if (perfilOutros) perfilOutros.style.display = 'block';
+                }
             });
-        }
+        });
     }
 }
 
-// 3. Função para manipular o formulário e usar localStorage
-function handleFormSubmit() {
-    const form = document.getElementById('contact-form');
+// 5. Função para manipular o envio do formulário e usar localStorage
+function configurarEnvioFormulario() {
+    const formulario = document.getElementById('formulario-contato');
     
-    if (form) {
-        form.addEventListener('submit', function(event) {
-            event.preventDefault(); // Impede o recarregamento da página
-
-            console.log("O botão foi clicado e a página não recarregou!");
+    if (formulario) {
+        formulario.addEventListener('submit', function(evento) {
+            evento.preventDefault(); 
             
-            // Interação DOM (selecionar elementos)
-            const name = document.getElementById('name').value;
-            const phone = document.getElementById('phone').value;
-            const workplace = document.getElementById('workplace').value;
-            const referrer = document.getElementById('referrer').value;
-            const messageContainer = document.getElementById('form-message');
+            const nome = document.getElementById('nome').value;
+            const telefone = document.getElementById('telefone').value;
+            const orgao = document.getElementById('orgao').value;
+            const indicacao = document.getElementById('indicacao').value;
+            const containerMensagem = document.getElementById('mensagem-formulario');
 
-            // Ramificação condicional
-            if (name !== "" && phone !== "") {
-                const userData = {
-                    nome: name,
-                    telefone: phone,
-                    orgao: workplace,
-                    indicacao: referrer
+            if (nome !== "" && telefone !== "") {
+                const dadosUsuario = {
+                    nome: nome,
+                    telefone: telefone,
+                    orgao: orgao,
+                    indicacao: indicacao
                 };
                 
-                // Usar localStorage
-                localStorage.setItem('sginf_lead', JSON.stringify(userData));
+                localStorage.setItem('sginf_lead', JSON.stringify(dadosUsuario));
                 
-                // Saída dinâmica usando Template Literal
-                messageContainer.innerHTML = `
-                    <div style="background-color: rgba(16, 185, 129, 0.2); color: #10b981; border: 1px solid #10b981; padding: 1rem; border-radius: 8px; margin-top: 1rem; text-align: center; font-weight: bold;">
-                        ✅ Obrigado, ${name}! Seus dados de demonstração para o órgão ${workplace} foram armazenados com sucesso.
+                containerMensagem.innerHTML = `
+                    <div class="mensagem-sucesso">
+                        ✅ Obrigado, ${nome}! Seus dados de demonstração para o órgão ${orgao} foram armazenados com sucesso.
                     </div>
                 `;
                 
-                // Limpa o formulário
-                form.reset();
+                formulario.reset();
             }
         });
     }
 }
 
-// 4. Função para atualizar dinamicamente o rodapé
-// 4. Função para atualizar dinamicamente o rodapé com a data formatada
-function updateFooter() {
-    const yearSpan = document.getElementById('anoatual');
-    const lastModifiedSpan = document.getElementById('ultimaModificacao');
+// 6. Função para atualizar dinamicamente o rodapé com a data formatada
+function atualizarRodape() {
+    const spanAno = document.getElementById('anoatual');
+    const spanUltimaModificacao = document.getElementById('ultimaModificacao');
     
-    if (yearSpan && lastModifiedSpan) {
-        // Atualiza o ano atual
-        yearSpan.innerHTML = `${new Date().getFullYear()}`;
-        
-        // Pega a data crua do navegador
+    if (spanAno && spanUltimaModificacao) {
+        spanAno.innerHTML = `${new Date().getFullYear()}`;
         const dataCrua = new Date(document.lastModified);
-        
-        // Converte para o formato brasileiro (dd/mm/aaaa)
         const dataFormatada = dataCrua.toLocaleDateString('pt-BR');
-        
-        // Injeta a data bonitinha no rodapé
-        lastModifiedSpan.innerHTML = `Última modificação: ${dataFormatada}`;
+        spanUltimaModificacao.innerHTML = `Última modificação: ${dataFormatada}`;
     }
 }
 
-// Chamando todas as funções quando o arquivo for carregado
-renderCards(challenges, 'desafios-container');
-renderCards(solutions, 'solucoes-container');
-renderRecursos();
-handleFormSubmit();
-updateFooter();
-setupFormLogic();
-
+// 7. Evento principal: chama todas as funções quando o arquivo HTML termina de carregar
+document.addEventListener('DOMContentLoaded', () => {
+    renderizarCartoes(desafios, 'desafios-container');
+    renderizarCartoes(solucoes, 'solucoes-container');
+    renderizarRecursos();
+    configurarEnvioFormulario();
+    atualizarRodape();
+    configurarLogicaFormulario();
+});

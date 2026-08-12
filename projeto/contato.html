@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-   <meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SGINF - RPPS por Roberto Ferreira da Rocha</title>
     <meta name="description"
@@ -17,7 +17,6 @@
         rel="stylesheet">
 </head>
 
-
 <body>
     <header>
         <div class="logo">SGINF - RPPS</div>
@@ -31,106 +30,98 @@
     </header>   
     <main>
         <section class="form-section">
-            <h2>Fale com um Especialista</h2>
-            <form id="contact-form">
-                <label for="name">Nome Completo:</label>
-                <input type="text" id="name" name="name" required>
+            <h2 class="titulo-centralizado">Fale com um Especialista</h2>
+            <form id="formulario-contato">
+                <label for="nome">Nome Completo: <span class="asterisco">*</span></label>
+                <input type="text" id="nome" name="nome" required>
 
-                <label for="phone">Telefone / WhatsApp:</label>
-                <input type="tel" id="phone" name="phone" required>
+                <label for="telefone">Telefone / WhatsApp: <span class="asterisco">*</span></label>
+                <input type="tel" id="telefone" name="telefone" required>
 
-                <label for="workplace">Órgão / Município:</label>
-                <input type="text" id="workplace" name="workplace" required>
+                <label for="orgao">Órgão / Município: <span class="asterisco">*</span></label>
+                <input type="text" id="orgao" name="orgao" required>
 
-                <label for="role">Qual é o seu perfil de atuação?</label>
-                <select id="role" name="role" required>
-                    <option value="" disabled selected>Selecione seu perfil...</option>
-                    <option value="gestor">Gestor de RPPS</option>
-                    <option value="contador">Contador</option>
-                    <option value="consultor">Consultor</option>
-                    <option value="servidor">Servidor</option>
-                    <option value="outros">Outros</option>
-                </select>
+                <label class="label-branca" style="margin-bottom: 0.5rem;">Qual é o seu perfil de atuação? <span class="asterisco">*</span></label>
+                <div class="radio-group-estilizado" style="flex-wrap: wrap;">
+                    <label class="radio-label">
+                        <input type="radio" name="perfil" value="gestor" required> Gestor de RPPS
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="perfil" value="contador"> Contador
+                    </label>                    
+                    <label class="radio-label">
+                        <input type="radio" name="perfil" value="prefeito"> Prefeito
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="perfil" value="outros"> Outros
+                    </label>
+                </div>
 
-                <!-- BLOCO 1: Gestor de RPPS -->
-                <div id="gestor-questions" style="display: none; margin-top: 0.5rem; padding: 1.5rem; background-color: #0f172a; border-radius: 8px; border: 1px solid #06b6d4;">
-                    <p style="margin-top: 0; color: #06b6d4; font-weight: bold; font-size: 1.1rem; border-bottom: 1px solid #334155; padding-bottom: 0.5rem;">Diagnóstico Rápido de Gestão</p>
+                <fieldset id="gestor-perfil" class="bloco-condicional">
+                    <legend class="titulo-diagnostico">Interesse e Desafios</legend>
+                    <p class="label-branca" style="margin-bottom: 1rem; margin-top: 0;">O que você busca melhorar no seu RPPS? <em>(Marque todas que se aplicam)</em></p>
                     
-                    <label style="margin-top: 1rem; color: #ffffff;">O seu RPPS possui sistema de controle de guias automático?</label>
-                    <div class="radio-group" style="display: flex; gap: 1.5rem; margin-top: 0.5rem; margin-bottom: 1rem;">
-                        <label style="font-weight: normal; color: #e2e8f0; display: flex; align-items: center; gap: 0.5rem;">
-                            <input type="radio" name="guias_auto" value="sim"> Sim
-                        </label>
-                        <label style="font-weight: normal; color: #e2e8f0; display: flex; align-items: center; gap: 0.5rem;">
-                            <input type="radio" name="guias_auto" value="nao"> Não
-                        </label>
-                    </div>
+                    <label class="radio-label" style="margin-bottom: 0.8rem;">
+                        <input type="checkbox" name="motivo_gestor" value="demonstracao"> Agendar uma demonstração completa
+                    </label>
+                    <label class="radio-label" style="margin-bottom: 0.8rem;">
+                        <input type="checkbox" name="motivo_gestor" value="guias"> Automação no controle de guias
+                    </label>
+                    <label class="radio-label" style="margin-bottom: 0.8rem;">
+                        <input type="checkbox" name="motivo_gestor" value="tce"> Facilidade para gerar anexos do TCE-PE
+                    </label>
+                    <label class="radio-label">
+                        <input type="checkbox" name="motivo_gestor" value="orcamento"> Solicitar um orçamento
+                    </label>
+                </fieldset>
 
-                    <div id="satisfacao-group" style="display: none; margin-bottom: 1rem;">
-                        <label for="satisfacao" style="color: #ffffff;">Você está satisfeito com os serviços prestados atualmente?</label>
-                        <select id="satisfacao" name="satisfacao">
-                            <option value="" disabled selected>Selecione...</option>
-                            <option value="total">Sim, totalmente satisfeito</option>
-                            <option value="parcial">Parcialmente satisfeito</option>
-                            <option value="insatisfeito">Não, estou insatisfeito</option>
-                        </select>
-                    </div>
-
-                    <label for="anexos-tce" style="margin-top: 1rem; color: #ffffff;">Como você prepara os anexos exigidos pelo TCE?</label>
-                    <select id="anexos-tce" name="anexos_tce">
-                        <option value="" disabled selected>Selecione...</option>
-                        <option value="automatica">De forma 100% automática (via sistema)</option>
-                        <option value="manual">Manualmente (planilhas de Excel)</option>
-                        <option value="mista">Mista (sistema + ajustes manuais)</option>
-                    </select>
-                </div>
-
-                <!-- BLOCO 2: Contador ou Consultor -->
-                <div id="parceiro-questions" style="display: none; margin-top: 0.5rem; padding: 1.5rem; background-color: #0f172a; border-radius: 8px; border: 1px solid #06b6d4;">
-                     <p style="margin-top: 0; color: #06b6d4; font-weight: bold; font-size: 1.1rem; border-bottom: 1px solid #334155; padding-bottom: 0.5rem;">Interesse Estratégico</p>
+                <fieldset id="parceiro-perfil" class="bloco-condicional">
+                     <legend class="titulo-diagnostico">Interesse Estratégico</legend>
+                     <p class="label-branca" style="margin-bottom: 1rem; margin-top: 0;">Qual é o seu principal objetivo? <em>(Marque todas que se aplicam)</em></p>
                      
-                     <label for="interesse-parceria" style="margin-top: 1rem; color: #ffffff;">Qual é o seu principal objetivo com o SGINF-RPPS?</label>
-                     <select id="interesse-parceria" name="interesse_parceria">
-                         <option value="" disabled selected>Selecione...</option>
-                         <option value="uso_clientes">Otimizar a prestação de serviços aos meus clientes (RPPS)</option>
-                         <option value="representacao">Atuar como parceiro/representante comercial da plataforma</option>
-                         <option value="conhecer">Apenas conhecer as funcionalidades tecnológicas</option>
-                     </select>
-                </div>
+                     <label class="radio-label" style="margin-bottom: 0.8rem;">
+                         <input type="checkbox" name="motivo_contador" value="clientes"> Otimizar serviços para meus clientes (RPPS)
+                     </label>
+                     <label class="radio-label" style="margin-bottom: 0.8rem;">
+                         <input type="checkbox" name="motivo_contador" value="parceria"> Proposta de parceria/representação
+                     </label>
+                     <label class="radio-label">
+                         <input type="checkbox" name="motivo_contador" value="conhecer"> Apenas conhecer a tecnologia
+                     </label>
+                </fieldset>
 
-                <!-- BLOCO 3: Servidor -->
-                <div id="servidor-questions" style="display: none; margin-top: 0.5rem; padding: 1.5rem; background-color: #0f172a; border-radius: 8px; border: 1px solid #06b6d4;">
-                     <p style="margin-top: 0; color: #06b6d4; font-weight: bold; font-size: 1.1rem; border-bottom: 1px solid #334155; padding-bottom: 0.5rem;">Acesso à Informação</p>
+                <fieldset id="prefeito-perfil" class="bloco-condicional">
+                     <legend class="titulo-diagnostico">Visão Executiva e Transparência</legend>
+                     <p class="label-branca" style="margin-bottom: 1rem; margin-top: 0;">Quais soluções você busca para sua gestão? <em>(Marque todas que se aplicam)</em></p>
                      
-                     <label for="acesso-info" style="margin-top: 1rem; color: #ffffff;">Como você avalia a facilidade de acesso às suas informações previdenciárias atualmente (extratos, contracheques, simulações)?</label>
-                     <select id="acesso-info" name="acesso_info">
-                         <option value="" disabled selected>Selecione...</option>
-                         <option value="facil">Muito fácil e transparente (Sistema Próprio/Portal)</option>
-                         <option value="razoavel">Razoável, mas poderia melhorar a tecnologia</option>
-                         <option value="dificil">Difícil, preciso solicitar presencialmente ou por e-mail</option>
-                         <option value="sem_acesso">Não tenho nenhum acesso às minhas informações</option>
-                     </select>
-                </div>
+                     <label class="radio-label" style="margin-bottom: 0.8rem;">
+                         <input type="checkbox" name="motivo_prefeito" value="conhecer"> Conhecer a tecnologia
+                     </label>
+                     <label class="radio-label" style="margin-bottom: 0.8rem;">
+                         <input type="checkbox" name="motivo_prefeito" value="acompanhamento"> Verificar recursos para acompanhamento da gestão previdenciária
+                     </label>
+                     <label class="radio-label">
+                         <input type="checkbox" name="motivo_prefeito" value="transparencia"> Dar mais transparência à população
+                     </label>
+                </fieldset>
 
-                <!-- BLOCO 4: Outros -->
-                <div id="outros-questions" style="display: none; margin-top: 0.5rem;">
-                     <label for="especifique-outro">Por favor, especifique seu perfil de atuação:</label>
-                     <input type="text" id="especifique-outro" name="especifique_outro" placeholder="Ex: Advogado Previdenciário, Auditor, Estudante, etc.">
-                </div>
+                <fieldset id="outros-perfil" style="display: none; margin-top: 0.5rem; border: none; padding: 0;">
+                     <label for="especifique-outro" class="label-branca">Por favor, especifique seu perfil de atuação e motivo do contato:</label>
+                     <input type="text" id="especifique-outro" name="especifique_outro" placeholder="Ex: Advogado Previdenciário buscando demonstração...">
+                </fieldset>
 
-                <label for="referrer" style="margin-top: 1rem;">Nome de quem indicou <em>(Opcional)</em>:</label>
-                <input type="text" id="referrer" name="referrer">
+                <label for="indicacao" class="margem-top">Nome de quem indicou <em>(Opcional)</em>:</label>
+                <input type="text" id="indicacao" name="indicacao">
 
-                <button type="submit" class="btn" style="margin-top: 1rem;">Solicitar Demonstração</button>
+                <button type="submit" class="btn margem-top">Solicitar Demonstração</button>
             </form>
-            <div id="form-message"></div>
+            <div id="mensagem-formulario"></div>
         </section>
     </main>
- <footer>
+    <footer>
         <p>&copy; <span id="anoatual"></span> - SGINF-RPPS. Roberto Ferreira da Rocha. Todos os direitos reservados.</p>
         <p id="ultimaModificacao"></p>
         <p><a href="referencias.html">Página de Referências</a></p>
     </footer>
-
 </body>
 </html>
