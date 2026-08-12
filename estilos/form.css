@@ -29,7 +29,6 @@ main {
     padding: 0 1rem;
 }
 
-/* Estilo da Caixa do Formulário */
 .review-form {
     background-color: var(--form-bg);
     padding: 2rem;
@@ -76,7 +75,6 @@ fieldset {
     margin-top: 0.5rem;
 }
 
-/* Checkboxes */
 .checkbox-group {
     display: flex;
     align-items: center;
